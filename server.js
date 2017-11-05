@@ -24,3 +24,28 @@ mongo.connect('mongodb://' + process.env.HOST + '/' + process.env.NAME, function
 	});
 
 });
+
+'use strict';
+ 
+const yelp = require('yelp-fusion');
+ 
+const token = yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
+  console.log(response.jsonBody.access_token);
+}).catch(e => {
+  console.log(e);
+});
+ 
+
+ 
+const client = yelp.client(token);
+ 
+client.search({
+  term:'Tabletop Games',
+  location: 'NYC'
+}).then(response => {
+  console.log("hi"); 
+  console.log(response.jsonBody.businesses[0].name);
+}).catch(e => {
+  console.log("yo");
+  console.log(e);
+}); 

@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "mongodb": "^2.2.33"
+    "mongodb": "^2.2.33",
+    "yelp-fusion": "^1.0.3"
   },
   "engines": {
     "node": "8.x"
