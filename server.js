@@ -1,39 +1,53 @@
-
 'use strict';
 
-// init project
-var express = require('express');
+var express = require('express'),
+	routes = require('./app/routes/index.js'),
+  mongo = require('mongodb').MongoClient;
+
 var app = express();
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+mongo.connect('mongodb://' + process.env.HOST + '/' + process.env.NAME, function (err, db) {
 
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
+	if (err) {
+		throw new Error('Database failed to connect!');
+	} else {
+		console.log('MongoDB successfully connected on port 27017.');
+	}
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+	//app.use('/public', express.static(process.cwd() + '/public'));
+	//app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
+
+	routes(app, db);
+
+	app.listen(3000, function () {
+		console.log('Listening on port 3000...');
+	});
+
 });
 
-app.get("/dreams", function (request, response) {
-  response.send(dreams);
-});
+'use strict';
+ 
+const yelp = require('yelp-fusion');
+ 
+yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
+  console.log("test");
+  const token = response.jsonBody.access_token;
+  const client = yelp.client(token);
+  therest(client);
+}).catch(e => {
+  console.log("baaah");
+  console.log(e);
+}); 
+  
+function therest(client){
 
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", function (request, response) {
-  dreams.push(request.query.dream);
-  response.sendStatus(200);
-});
-
-// Simple in-memory store for now
-var dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
-
-// listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+client.search({
+  term:'Tabletop Games',
+  location: 'NYC'
+}).then(response => {
+  console.log("hi"); 
+  console.log(response.jsonBody.businesses[0].name);
+}).catch(e => {
+  console.log("yo");
+  console.log(e);
+}); }
