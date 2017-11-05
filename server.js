@@ -29,16 +29,18 @@ mongo.connect('mongodb://' + process.env.HOST + '/' + process.env.NAME, function
  
 const yelp = require('yelp-fusion');
  
-const token = yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
-  console.log(response.jsonBody.access_token);
+yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
+  console.log("test");
+  const token = response.jsonBody.access_token;
+  const client = yelp.client(token);
+  therest(client);
 }).catch(e => {
+  console.log("baaah");
   console.log(e);
-});
- 
+}); 
+  
+function therest(client){
 
- 
-const client = yelp.client(token);
- 
 client.search({
   term:'Tabletop Games',
   location: 'NYC'
@@ -48,4 +50,4 @@ client.search({
 }).catch(e => {
   console.log("yo");
   console.log(e);
-}); 
+}); }
