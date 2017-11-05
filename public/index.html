@@ -1,4 +1,22 @@
-<form method="get" action="/search">
-  <input type="text" name="q">
-  <button type="submit">Search</button>
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <title>Tabletop Coordination App</title>
+      <link href="/public/css/main.css" rel="stylesheet" type="text/css">  
+   </head>
+
+   <body>
+      <form method="" action="" class="navbar-center" >
+   <span class="col">
+   <input style="font-size: 16px;" name="searchTerm" type="search" id="findPolls"  placeholder="Search for polls" value ="">
+   </span>
+   <span class="col" id="searchIcon">
+   <input type="image" alt="submit" src="https://image.flaticon.com/icons/png/512/49/49116.png" value="Search" class="buttonToSubmit" >
+   </span>
 </form>
+      <script type="text/javascript" src="/controllers/clickController.client.js"></script>   
+   </body>
+
+</html>

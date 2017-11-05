@@ -1,0 +1,47 @@
+form {
+     float: none;
+     display: inline;
+    text-decoration: none;
+   border: none; 
+ }
+
+ .navbar-center
+{
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    padding-top: 10px; 
+    display: table;
+}
+
+
+.buttonToSubmit {
+     background: #F7EAE9;
+     border: #474343;
+     text-align: center;
+     text-decoration: none;
+     margin-left: 0px;
+     border-style: solid;
+     border-width: .5px;
+     width: 25px;
+     padding: 2px;
+     border-radius: 0px 4px 4px 0px;
+ }
+ .buttonToSubmit:hover {
+     background: #C4BAB9;
+ }
+
+.col{
+  display: table-cell; 
+    vertical-align: top; 
+}
+
+#findPolls {
+     text-align: center; 
+     text-decoration: none;
+     border: #474343;
+     border-style: solid;
+     border-width: .5px;
+     vertical-align: middle;
+  font-size: 16px; 
+ }
