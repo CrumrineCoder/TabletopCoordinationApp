@@ -1,31 +1,27 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "my-glitch-app",
-  "version": "0.0.1",
-  "description": "What am I about?",
+  "name": "TabletopCoordinationApp",
+  "version": "1.0.2",
+  "description": "Like the night life coordination App, but for dweebs",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "dependencies": {
-    "express": "^4.16.2",
-    "mongodb": "^2.2.33",
-    "yelp-fusion": "^1.0.3"
-  },
-  "engines": {
-    "node": "8.x"
-  },
   "repository": {
-    "url": "https://glitch.com/edit/#!/welcome-project"
+    "type": "git",
+    "url": "git+https://github.com/CrumrineCoder/TabletopCoordinationApp"
   },
-  "license": "MIT",
   "keywords": [
-    "node",
-    "glitch",
-    "express"
+    "MEAN",
+    "MongoDB",
+    "Express",
+    "Node",
+    "javascript"
   ],
-  "devDependencies": {},
-  "author": ""
+  "author": "Nicolas Crumrine",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongodb": "^2.0.42",
+    "yelp-fusion": "*"
+  }
 }
