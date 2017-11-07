@@ -10,8 +10,8 @@ module.exports = function (app, db) {
          res.sendFile(process.cwd() + '/public/index.html');
       });
 
-   app.route('api/yelp/?')
-      .get(YelpHandler.getYelp)
+ //  app.route('api/yelp/?')
+  //    .get(YelpHandler.getYelp)
 /*   app.route('/api/clicks')
       .get(clickHandler.getClicks)
       .post(clickHandler.addClick)

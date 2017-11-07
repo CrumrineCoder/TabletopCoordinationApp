@@ -20,8 +20,9 @@
   "author": "Nicolas Crumrine",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.3",
-    "mongodb": "^2.0.42",
-    "yelp-fusion": "*"
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "yelp-fusion": "^1.0.3",
+    "body-parser": "*"
   }
 }

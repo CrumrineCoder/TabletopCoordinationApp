@@ -1,10 +1,11 @@
 'use strict';
 
 (function () {
+  console.log("hi");
  var apiUrl = 'https://tabletop.glitch.me/';
-  var searchTerm = document.getElementById("findPolls");
-     var buttonToSubmit = document.getElementsByClassName("buttonToSubmit")[0];
-     buttonToSubmit.addEventListener('click', function(e) {
+  var searchTerm = document.getElementById("searchBar");
+     var buttonToSubmit = document.getElementById("findStores");
+     $('#findStores').submit(function(e) {
        console.log("help");
        e.preventDefault();
          var searchText = searchTerm.value;
@@ -13,6 +14,13 @@
                  console.log(data);
      }); */
      });
+  
+  $('#hello-world').submit(function(ev) {
+    ev.preventDefault(); // to stop the form from submitting
+    /* Validations go here */
+    this.submit(); // If all the validations succeeded
+});
+  
   
   //Add event listener to submit bar that collect the information from it 
   //Send info to the handler server, and then get the data back
