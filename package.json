@@ -1,28 +1,31 @@
 {
-  "name": "TabletopCoordinationApp",
+  "name": "clementinejs",
   "version": "1.0.2",
-  "description": "Like the night life coordination App, but for dweebs",
+  "description": "A light-weight MEAN stack boilerplate.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CrumrineCoder/TabletopCoordinationApp"
+    "url": "git+https://github.com/johnstonbl01/clementinejs"
   },
+  "homepage": "http://johnstonbl01.github.io/clementinejs/",
+  "bugs": "https://github.com/johnstonbl01/clementinejs/issues",
   "keywords": [
     "MEAN",
     "MongoDB",
     "Express",
+    "Angular",
     "Node",
-    "javascript"
+    "javascript",
+    "boilerplate"
   ],
-  "author": "Nicolas Crumrine",
+  "author": "Blake Johnston",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.2",
-    "mongodb": "^2.2.33",
-    "yelp-fusion": "^1.0.3",
-    "body-parser": "*"
+    "express": "^4.13.3",
+    "mongodb": "^2.0.42",
+    "yelp-fusion": "^1.0.3"
   }
 }

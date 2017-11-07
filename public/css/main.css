@@ -1,47 +1,65 @@
-form {
-     float: none;
-     display: inline;
-    text-decoration: none;
-   border: none; 
- }
+/****** Main Styling ******/
 
- .navbar-center
-{
-    position: absolute;
-    left: 50%;
-    transform: translatex(-50%);
-    padding-top: 10px; 
-    display: table;
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
 }
 
-
-.buttonToSubmit {
-     background: #F7EAE9;
-     border: #474343;
-     text-align: center;
-     text-decoration: none;
-     margin-left: 0px;
-     border-style: solid;
-     border-width: .5px;
-     width: 25px;
-     padding: 2px;
-     border-radius: 0px 4px 4px 0px;
- }
- .buttonToSubmit:hover {
-     background: #C4BAB9;
- }
-
-.col{
-  display: table-cell; 
-    vertical-align: top; 
+p {
+	margin: 8px 0 0 0;
 }
 
-#findPolls {
-     text-align: center; 
-     text-decoration: none;
-     border: #474343;
-     border-style: solid;
-     border-width: .5px;
-     vertical-align: middle;
-  font-size: 16px; 
- }
+.container p {
+	text-align: center;
+	padding: 0;
+}
+
+/****** Logo Div Styling ******/
+
+img {
+	margin: 20px auto 0 auto;
+	display: block;
+}
+
+.clementine-text { /* Styling for the Clementine.js text */
+	padding: 0;
+	margin: -25px 0 0 0;
+	font-weight: 500;
+	font-size: 60px;
+	color: #FFA000;
+}
+
+/****** Click Styling ******/
+
+.btn-container {	/* Styling for the div that contains the buttons */
+	margin: -10px auto 0 auto;
+	text-align: center;
+}
+
+.btn {	/* Styling for buttons */
+	margin: 0 8px;
+	color: white;
+	background-color: #00BCD4;
+	display: inline-block;
+	border: 0;
+	font-size: 14px;
+	border-radius: 3px;
+	padding: 10px 5px;
+	width: 100px;
+	font-weight: 500;
+}
+
+.btn:focus {	/* Remove outline when hovering over button */
+	outline: none;
+}
+
+.btn:active {	/* Scale the button down by 10% when clicking on button */
+	transform: scale(0.9, 0.9);
+	-webkit-transform: scale(0.9, 0.9);
+	-moz-transform: scale(0.9, 0.9);
+}
+
+.btn-delete {	/* Styling for delete button */
+	background-color: #ECEFF1;
+	color: #212121;
+}

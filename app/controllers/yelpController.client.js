@@ -1,37 +1,10 @@
 'use strict';
 
+
+
+
 (function () {
-  console.log("hi");
- var apiUrl = 'https://tabletop.glitch.me/';
-  var searchTerm = document.getElementById("searchBar");
-     var buttonToSubmit = document.getElementById("findStores");
-     $('#findStores').submit(function(e) {
-       console.log("help");
-       e.preventDefault();
-         var searchText = searchTerm.value;
-       console.log(searchText);
-    /*     ajaxRequest('GET', apiUrl + "api/yelp/location=" + searchText , function(data) {
-                 console.log(data);
-     }); */
-     });
-  
-  $('#hello-world').submit(function(ev) {
-    ev.preventDefault(); // to stop the form from submitting
-    /* Validations go here */
-    this.submit(); // If all the validations succeeded
-});
-  
-  
-  //Add event listener to submit bar that collect the information from it 
-  //Send info to the handler server, and then get the data back
-  // Change the HTML based on it, but first console it
-  
-   var addButton = document.querySelector('.btn-add');
-   var deleteButton = document.querySelector('.btn-delete');
-   var clickNbr = document.querySelector('#click-nbr');
-
-
-   function ready (fn) {
+  function ready (fn) {
       if (typeof fn !== 'function') {
          return;
       }
@@ -55,28 +28,26 @@
       xmlhttp.open(method, url, true);
       xmlhttp.send();
    }
+  
+  
+  console.log("hi");
+ var apiUrl = 'https://tabletop.glitch.me/';
+  var searchTerm = document.getElementById("searchBar");
+     var buttonToSubmit = document.getElementById("findStores");
+     $('#findStores').submit(function(e) {
+       console.log("help");
+       e.preventDefault();
+         var searchText = searchTerm.value;
+       console.log(searchText);
+       // Make a request to the backend to get the data
+       
+       
+       
+        ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText , function(data) {
+                 console.log(data);
+     }); 
+     });
+  
 
-   function updateClickCount (data) {
-      var clicksObject = JSON.parse(data);
-      clickNbr.innerHTML = clicksObject.clicks;
-   }
-
-   ready(ajaxRequest('GET', apiUrl, updateClickCount));
-
-   addButton.addEventListener('click', function () {
-
-      ajaxRequest('POST', apiUrl, function () {
-         ajaxRequest('GET', apiUrl, updateClickCount);
-      });
-
-   }, false);
-
-   deleteButton.addEventListener('click', function () {
-
-      ajaxRequest('DELETE', apiUrl, function () {
-         ajaxRequest('GET', apiUrl, updateClickCount);
-      });
-
-   }, false);
 
 })();
