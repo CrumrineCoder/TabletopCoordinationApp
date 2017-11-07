@@ -3,20 +3,18 @@
 <html>
 
    <head>
-      <title>Tabletop Coordination App</title>
+
       <link href="/public/css/main.css" rel="stylesheet" type="text/css">  
    </head>
 
    <body>
-      <form method="" action="" class="navbar-center" >
-   <span class="col">
-   <input style="font-size: 16px;" name="searchTerm" type="search" id="findPolls"  placeholder="Search for polls" value ="">
-   </span>
-   <span class="col" id="searchIcon">
-   <input type="image" alt="submit" src="https://image.flaticon.com/icons/png/512/49/49116.png" value="Search" class="buttonToSubmit" >
-   </span>
+     
+    <form id="findStores">
+  <input type="text" id="searchBar">
+  <button type="submit">Search</button>
 </form>
-      <script type="text/javascript" src="/controllers/clickController.client.js"></script>   
+    <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="/controllers/yelpController.client.js"></script>   
    </body>
 
 </html>
