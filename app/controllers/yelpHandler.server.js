@@ -15,13 +15,27 @@ function yelpHandler(db) {
     }).catch(e => {
         console.log(e);
     });
-
+    var businesses = [];
     function processData(client, location) {
         client.search({
             term: 'Tabletop Games',
             location: location
         }).then(response => {
-            console.log(response.jsonBody.businesses[0].name);
+          var add = {};
+          
+          for(var i=0; i<20; i++){
+          add.id = response.jsonBody.businesses[i].id;
+          add.name = response.jsonBody.businesses[i].name;
+          add.image = response.jsonBody.businesses[i].image_url;
+          add.url = response.jsonBody.businesses[i].url;
+          add.rating = response.jsonBody.businesses[i].rating;
+          add.price = response.jsonBody.businesses[i].price;
+            businesses.push(add);
+            add={};
+          }
+           businesses =    JSON.stringify(businesses); 
+     
+          res.send(businesses);
         }).catch(e => {
             console.log(e);
         });
