@@ -1,31 +1,33 @@
 {
-  "name": "clementinejs",
+  "name": "Tabletop",
   "version": "1.0.2",
-  "description": "A light-weight MEAN stack boilerplate.",
+  "description": "An app for coordinating tabletop nerds",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnstonbl01/clementinejs"
+    "url": "git+https://github.com/CrumrineCoder/TabletopCoordinationApp"
   },
-  "homepage": "http://johnstonbl01.github.io/clementinejs/",
-  "bugs": "https://github.com/johnstonbl01/clementinejs/issues",
   "keywords": [
     "MEAN",
     "MongoDB",
     "Express",
-    "Angular",
     "Node",
     "javascript",
     "boilerplate"
   ],
-  "author": "Blake Johnston",
+  "author": "Nicolas Crumrine",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.3",
-    "mongodb": "^2.0.42",
-    "yelp-fusion": "^1.0.3"
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "yelp-fusion": "^1.0.3",
+    "passport-local": "*",
+    "passport": "*",
+    "bcryptjs": "*",
+    "mongoose": "*",
+    "express-handlebars": "*"
   }
 }

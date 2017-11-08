@@ -7,7 +7,7 @@ module.exports = function (app, db) {
 
    app.route('/')
       .get(function (req, res) {
-         res.sendFile(process.cwd() + '/public/index.html');
+         res.render(process.cwd() + '/views/index.handlebars');
       });
   app.route('/api/yelp/?')
     .get(yelpHandler.getYelp)
