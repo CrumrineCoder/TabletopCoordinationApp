@@ -3,8 +3,16 @@
 var express = require('express');
 var mongo = require('mongodb');
 var routes = require('./app/routes/index.js');
-
+var path = require('path');
+var exphbs = require('express-handlebars');
 var app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs({
+    defaultLayout: 'layout'
+}));
+app.set('view engine', 'handlebars');
+
 
 mongo.connect('mongodb://' + process.env.HOST + '/' + process.env.NAME, function (err, db) {
 

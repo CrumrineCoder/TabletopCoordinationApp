@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<h2 class="page-header">Register</h2>
+<html>
+<head>
+
+    <link href="/public/css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+{{/if}}
+<form method="post" action="/users/register" id="registration">
+   <div class="form-group">
+    <label class="exclude">Name</label>
+    <input type="text" class="form-control" placeholder="Name" name="name">
+  </div>
+  <div class="form-group">
+    <label class="exclude" >Username</label>
+    <input type="text" class="form-control" placeholder="Username" name="username">
+  </div>
+   <div class="form-group">
+    <label class="exclude">Email</label>
+    <input type="email" class="form-control" placeholder="Email" name="email">
+  </div>
+  <div class="form-group">
+    <label class="exclude">Password</label>
+    <input type="password" class="form-control" placeholder="Password" name="password">
+  </div>
+  <div class="form-group">
+    <label class="exclude">Confirm Password</label>
+    <input type="password" class="form-control" placeholder="Password" name="password2">
+  </div>
+  <button type="submit" class="submitButton">Submit</button>
+</form>
+    <script type="text/javascript" src="/controllers/voteController.client.js"></script>
+</body>
+</html>
+
+
+
