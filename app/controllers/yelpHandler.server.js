@@ -1,7 +1,10 @@
 'use strict';
 
 function yelpHandler(db) {
-    const yelp = require('yelp-fusion');
+    var storeCollection = db.collection('store');
+  
+  const yelp = require('yelp-fusion');
+  
     this.getYelp = function(req, res) {
         var location = req.query.location;
         yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
@@ -35,6 +38,25 @@ function yelpHandler(db) {
                 console.log(e);
             });
         }
+    }
+    
+     this.checkExistance = function(req, res) {
+        storeCollection.find({
+            question: req.query.question
+        }, {
+            $exists: true
+        }).toArray(function(err, doc) //find if a value exists
+            {
+                if (err) throw err
+                if (doc && doc.length) //if it does
+                {
+                    res.json(doc); // print out what it sends back
+                } else // if it does not 
+                {
+                    res.json("Not in docs");
+                }
+            });
+
     }
 }
 module.exports = yelpHandler;
