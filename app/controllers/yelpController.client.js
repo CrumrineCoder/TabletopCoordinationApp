@@ -32,7 +32,12 @@
              });
    
          }
-  getUser(function(){console.log(user)});
+  var logged = false; 
+  getUser(function(){
+    if(user != undefined){
+      logged = true; 
+    }
+  });
   
   
   
@@ -45,8 +50,15 @@
             data = JSON.parse(data);
             for (var i = 0; i < 5; i++) {
               // If the user is not loggged in, disable the buttons for who is coming. 
-                document.getElementById("display").innerHTML += "<div id = ' " + data[i].id + "'> <a href='" + data[i].url + "'><img src='" + data[i].image + "'></img><h2> " + data[i].name + " </h2> </a> <p> 0 going </p> <button> ATTEND </button> <p> " + data[i].rating + " </p> <p> " + data[i].price + " </div>";
-            }
+              
+              // Come back with  Angular and make this look better
+              if(logged){
+                document.getElementById("display").innerHTML += "<div id = ' " + data[i].id + "'> <a href='" + data[i].url + "'><img src='" + data[i].image + "'></img><h2> " + data[i].name + " </h2> </a> <p> 0 going </p> <button onclick='rsvp()' value='attend' id='rsvpButton'> ATTEND </button> <p> " + data[i].rating + " </p> <p> " + data[i].price + " </div>";
+            
+              } else{
+                document.getElementById("display").innerHTML += "<div id = ' " + data[i].id + "'> <a href='" + data[i].url + "'><img src='" + data[i].image + "'></img><h2> " + data[i].name + " </h2> </a> <p> 0 going </p> <p> " + data[i].rating + " </p> <p> " + data[i].price + " </div>";
+              }
+              }
         });
     });
 })();
