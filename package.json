@@ -28,6 +28,11 @@
     "passport": "*",
     "bcryptjs": "*",
     "mongoose": "*",
-    "express-handlebars": "*"
+    "express-handlebars": "*",
+    "passport-remember-me": "*",
+    "cookie-parser": "*",
+    "express-validator": "*",
+    "connect-flash": "*",
+    "express-session": "*"
   }
 }

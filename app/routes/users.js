@@ -37,7 +37,7 @@ router.get('/user_data', function(req, res) {
 
 // Register User
 router.post('/register', function(req, res) {
-
+    console.log(req.body);
     var name = req.body.name;
     var email = req.body.email;
     var username = req.body.username;
@@ -59,6 +59,7 @@ router.post('/register', function(req, res) {
             errors: errors
         });
     } else {
+      console.log("ehllo");
         var newUser = new User({
             name: name,
             email: email,
@@ -66,8 +67,10 @@ router.post('/register', function(req, res) {
             password: password
         });
         User.createUser(newUser, function(err, user) {
+          console.log("baaaai");
             if (err) throw err;
             console.log(user);
+          console.log("hi");
         });
 
         req.flash('success_msg', 'You are registered and can now login');
