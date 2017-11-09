@@ -1,5 +1,3 @@
-// This file handles the backend for the user mongoose schem and functions
-
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
@@ -23,13 +21,10 @@ var UserSchema = mongoose.Schema({
 var User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.createUser = function(newUser, callback){
-  console.log('HADSFA');
 	bcrypt.genSalt(10, function(err, salt) {
 	    bcrypt.hash(newUser.password, salt, function(err, hash) {
 	        newUser.password = hash;
-        console.log("yes");
 	        newUser.save(callback);
-         console.log("no");
 	    });
 	});
 }
