@@ -21,6 +21,21 @@
         xmlhttp.send();
     }
     var apiUrl = 'https://tabletop.glitch.me/';
+  var user;
+  function getUser(callback) {
+             ajaxRequest('GET', apiUrl + "users/user_data", function(data) {
+                 data = JSON.parse(data);
+                 if (data.hasOwnProperty('username')) {
+                     user = data.username;
+                 }
+                 callback();
+             });
+   
+         }
+  getUser(function(){console.log(user)});
+  
+  
+  
     var searchTerm = document.getElementById("searchBar");
     var buttonToSubmit = document.getElementById("findStores");
     $('#findStores').submit(function(e) {
