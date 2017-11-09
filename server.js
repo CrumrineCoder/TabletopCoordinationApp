@@ -1,9 +1,9 @@
-'use strict';
 
-var express = require('express');
-var mongo = require('mongodb');
-var routes = require('./app/routes/index.js');
-var app = express();
+'use strict';
+/* Authentication: */
+/*
+  This file handles connecting the user to the server and the controllers to the database. 
+*/
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -14,9 +14,22 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://' + process.env.HOST + '/' + process.env.NAME, {
+    useMongoClient: true
+});
+var db = mongoose.connection;
+//var polls = require('./app/routes/polls.js');
 var users = require('./app/routes/users.js');
+var express = require('express'),
+    routes = require('./app/routes/index.js'),
+    mongodb = require('mongodb');
+var MongoClient = mongodb.MongoClient;
+var mLab = 'mongodb://' + process.env.HOST + '/' + process.env.NAME;
+var app = express();
 
-
+// Taken from: c
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({
     defaultLayout: 'layout'
@@ -29,14 +42,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
-
-   app.use('/views', express.static(process.cwd() + '/views'));
-   app.use('/public', express.static(process.cwd() + '/public'));
-
-
+app.use('/public', express.static(process.cwd() + '/public'));
+app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
+app.use('/views', express.static(process.cwd() + '/views'));
 
 app.use(session({
-    secret: 'secret',
+    secret: process.env.PASSKEY,
     saveUninitialized: true,
     resave: true
 }));
@@ -63,6 +74,7 @@ app.use(expressValidator({
 }));
 
 app.use(flash());
+
 app.use(function(req, res, next) {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
@@ -71,23 +83,21 @@ app.use(function(req, res, next) {
     next();
 });
 
+//app.use('/', routes);
+app.use('/users', users);
 
 
-
-mongo.connect('mongodb://' + process.env.HOST + '/' + process.env.NAME, function (err, db) {
-
-   if (err) {
-      throw new Error('Database failed to connect!');
-   } else {
-      console.log('Successfully connected to MongoDB on port 27017.');
-   }
-  app.use('/users', users);
-   app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
-
-   routes(app, db);
-
-   app.listen(3000, function () {
-      console.log('Node.js listening on port 3000...');
-   });
-
+MongoClient.connect(mLab, function(err, db) {
+ 
+    if (err) {
+        throw new Error('Database failed to connect!');
+    } else {
+      //  console.log('MongoDB successfully connected on port 27017.');
+    }
+ 
+    //Exports the routes to app and db
+    routes(app, db);
+    app.listen(3000, function() {
+    //    console.log('Listening on port 3000...');
+    });
 });
