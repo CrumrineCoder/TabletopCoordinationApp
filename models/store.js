@@ -42,7 +42,7 @@ var str = (newPoll.question).replace(/(['"])/g, "\\$1");
       console.log(item);
     }); */
   //  $search: '\"' + newPoll.question + '\"'
-    polls.replaceOne({
+  /*  polls.replaceOne({
         $text: {
             $search: '\"' + newPoll.question + '\"'
         }
@@ -121,4 +121,4 @@ module.exports.checkExistance = function(poll, res, callback) {
                 return callback(null, "Not in docs");
             }
         });
-}
+} */

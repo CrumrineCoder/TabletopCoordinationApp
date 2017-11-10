@@ -40,11 +40,7 @@
     });
 
     function rsvp(test) {
-    console.log(test);
-      // e.preventDefault();
-        console.log("climb!");
-        console.log(user);
-       ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user, function(data) {
+       ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user + "&id="+test, function(data) {
          console.log("Yes");
        });
     }
@@ -80,7 +76,7 @@
                     button.onclick = function(){
                       rsvp(this.id);
                     };
-                    button.id = i; 
+                    button.id = data[i].id; 
                     var textNode = document.createTextNode("attend");
                     button.appendChild(textNode);
                     DIV.appendChild(button);
