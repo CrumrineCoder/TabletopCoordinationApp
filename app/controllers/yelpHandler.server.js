@@ -4,8 +4,31 @@ function yelpHandler(db) {
     var storeCollection = db.collection('store');
   
   this.addRSVP = function(req, res){
-    console.log("Test"); 
-    console.log(req.query.user);
+    var notFound;
+    var stores = storeCollection.find({id: req.query.id}, {id: 1}).limit(1).toArray(function(err,doc){
+      if(doc == []){
+        notFound = false; 
+      } else{
+        notFound = true; 
+      }
+      console.log(notFound);
+      console.log(doc);
+    });
+    /* storeCollection.find({
+            question: req.query.question
+        }, {
+            $exists: true
+        }).toArray(function(err, doc) //find if a value exists
+            {
+                if (err) throw err
+                if (doc && doc.length) //if it does
+                {
+                    res.json(doc); // print out what it sends back
+                } else // if it does not 
+                {
+                    res.json("Not in docs");
+                }
+            }); */
   }
   const yelp = require('yelp-fusion');
   
