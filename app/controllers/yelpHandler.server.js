@@ -3,6 +3,17 @@
 function yelpHandler(db) {
     var storeCollection = db.collection('store');
   
+  this.getUsers = function(req,res){
+   // console.log("hello");
+     var stores = storeCollection.find({id: req.query.id}, {users: 1}).toArray(function(err,doc){
+        if(doc.length == 0 || doc == null){
+          res.json(0);
+        } else{
+          res.json(doc[0].users.length);
+        }  
+     
+     });
+  }
   this.addRSVP = function(req, res){
     console.log("hello?");
     var notFound;
