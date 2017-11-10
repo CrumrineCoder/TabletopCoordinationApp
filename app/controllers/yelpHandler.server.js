@@ -4,24 +4,23 @@ function yelpHandler(db) {
     var storeCollection = db.collection('store');
   
   this.addRSVP = function(req, res){
+    console.log("hello?");
     var notFound;
-    checkExistance();
-  function checkExistance(){
+    var userLength = 1; 
+
     var stores = storeCollection.find({id: req.query.id}, {id: 1}).limit(1).toArray(function(err,doc){
-   
       if(doc.length == 0 || doc == null){
         storeCollection.insertOne({ id: req.query.id, users: [req.query.user]});
-        console.log("Empty");
       } else{
        storeCollection.update(
          {id: req.query.id},
          //Should be a way to check if the user is already in the array
          { $push: { users: req.query.user } }
         )
-        console.log("Add");
       }
+      res.send()
     });
-  }
+  
     /* storeCollection.find({
             question: req.query.question
         }, {
