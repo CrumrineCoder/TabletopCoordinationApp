@@ -9,7 +9,7 @@ function yelpHandler(db) {
         if(doc.length == 0 || doc == null){
           res.json(0);
         } else{
-          res.json(doc[0].users.length);
+          res.json(doc[0].users);
         }  
      
      });

@@ -49,16 +49,33 @@
     $('#findStores').submit(function(e) {
         e.preventDefault();
         var searchText = searchTerm.value;
+       var users = [];
         ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText, function(data) {
+          
             data = JSON.parse(data);
-            for (var i = 0; i < 5; i++) {
-                // If the user is not loggged in, disable the buttons for who is coming. 
-                // Come back with  Angular and make this look better
+           
+          for (var i = 0; i < 5; i++) {
+              ajaxRequest('GET', apiUrl + "api/getUsers/?id=" + data[i].id, function(data) {
+                  data = JSON.parse(data);
+                  users.push(data);
+                console.log(users);
+                console.log("first");
+                if(users.length == 5){
+                  console.log(true);
+                  theRest();
+                }
+              })
+          }
+          function theRest(){
+           for (var i = 0; i < 5; i++) {
+                console.log(users);
+             console.log("seocnd");
                 var DIV = document.createElement("DIV");
                 DIV.className = "yelpContainer";
                 document.getElementById("display").appendChild(DIV);
                 var A = document.createElement("A");
                 var img = document.createElement("img");
+
                 img.src = data[i].image;
                 A.appendChild(img);
                 var h2 = document.createElement("h2");
@@ -68,15 +85,17 @@
                 DIV.appendChild(A);
                 var p = document.createElement("P");
                 // Change this to correspond 
-                var textNode = document.createTextNode("0 going");
+             console.log(users);
+                var amount = users[i].length; 
+             if (amount == null){
+               amount = 0; 
+             }
+                var textNode = document.createTextNode(users[i].length + " going");
                 p.appendChild(textNode);
                 DIV.appendChild(p);
                 if (logged) {
                     var button = document.createElement("BUTTON");
-                  ajaxRequest('GET', apiUrl + "api/getUsers/?id=" + data[i].id, function(data) {
-                      data = JSON.parse(data);
-                    console.log(data);
-                  })
+                    if(users[i].indexOf(user) != -1){
                     button.onclick = function(){
                       rsvp(this.id);
                     };
@@ -84,6 +103,7 @@
                     var textNode = document.createTextNode("attend");
                     button.appendChild(textNode);
                     DIV.appendChild(button);
+                    }
                 }
                 var p = document.createElement("P");
                 // Change this to correspond 
@@ -96,6 +116,8 @@
                 p.appendChild(textNode);
                 DIV.appendChild(p);
             }
+          }
+            
         });
     });
 })();
