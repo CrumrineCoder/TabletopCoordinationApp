@@ -3,6 +3,10 @@
 function yelpHandler(db) {
     var storeCollection = db.collection('store');
   
+  this.addRSVP = function(req, res){
+    console.log("Test"); 
+    console.log(req.query.user);
+  }
   const yelp = require('yelp-fusion');
   
     this.getYelp = function(req, res) {
