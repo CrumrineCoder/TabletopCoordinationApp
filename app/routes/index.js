@@ -11,6 +11,8 @@ module.exports = function (app, db) {
       });
   app.route("/api/addRSVP/?")
     .get(yelpHandler.addRSVP)
+  app.route("/api/getUsers/?")
+    .get(yelpHandler.getUsers)
   app.route('/api/yelp/?')
     .get(yelpHandler.getYelp)
  /*  app.route('/api/clicks')

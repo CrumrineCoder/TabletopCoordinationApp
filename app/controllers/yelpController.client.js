@@ -73,6 +73,10 @@
                 DIV.appendChild(p);
                 if (logged) {
                     var button = document.createElement("BUTTON");
+                  ajaxRequest('GET', apiUrl + "api/getUsers/?id=" + data[i].id, function(data) {
+                      data = JSON.parse(data);
+                    console.log(data);
+                  })
                     button.onclick = function(){
                       rsvp(this.id);
                     };
