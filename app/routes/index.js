@@ -9,6 +9,8 @@ module.exports = function (app, db) {
       .get(function (req, res) {
          res.render(process.cwd() + '/views/index.handlebars');
       });
+  app.route("/api/addRSVP/?")
+    .get(yelpHandler.addRSVP)
   app.route('/api/yelp/?')
     .get(yelpHandler.getYelp)
  /*  app.route('/api/clicks')

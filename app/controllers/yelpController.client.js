@@ -42,6 +42,9 @@
     function rsvp() {
         console.log("climb!");
         console.log(user);
+       ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user, function(data) {
+         console.log("Yes");
+       });
     }
     var searchTerm = document.getElementById("searchBar");
     var buttonToSubmit = document.getElementById("findStores");
