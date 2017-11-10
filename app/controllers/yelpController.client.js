@@ -21,6 +21,31 @@
         xmlhttp.send();
     }
     var apiUrl = 'https://tabletop.glitch.me/';
+  var user;
+  function getUser(callback) {
+             ajaxRequest('GET', apiUrl + "users/user_data", function(data) {
+                 data = JSON.parse(data);
+                 if (data.hasOwnProperty('username')) {
+                     user = data.username;
+                 }
+                 callback();
+             });
+   
+         }
+  var logged = false; 
+  getUser(function(){
+    if(user != undefined){
+      logged = true; 
+    }
+  });
+  
+  function rsvp(){
+    console.log("climb!");
+    console.log(user);
+  }
+  
+  
+  
     var searchTerm = document.getElementById("searchBar");
     var buttonToSubmit = document.getElementById("findStores");
     $('#findStores').submit(function(e) {
@@ -30,8 +55,46 @@
             data = JSON.parse(data);
             for (var i = 0; i < 5; i++) {
               // If the user is not loggged in, disable the buttons for who is coming. 
-                document.getElementById("display").innerHTML += "<div id = ' " + data[i].id + "'> <a href='" + data[i].url + "'><img src='" + data[i].image + "'></img><h2> " + data[i].name + " </h2> </a> <p> 0 going </p> <button> ATTEND </button> <p> " + data[i].rating + " </p> <p> " + data[i].price + " </div>";
-            }
+              
+             	var DIV = document.createElement("DIV"); 
+	DIV.className = "yelpContainer"; 
+	document.getElementById("display").appendChild(DIV); 
+	
+	var A = document.createElement("A"); 
+	var img = document.createElement("img"); 
+	img.src = data[i].image; 
+	A.appendChild(img); 
+	var h2 = document.createElement("h2"); 
+	var textNode = document.createTextNode(data[i].name); 
+	A.appendChild(textNode);
+	A.href = data[i].url; 
+	DIV.appendChild(A); 
+	
+	var p = document.createElement("P"); 
+	// Change this to correspond 
+	var textNode = document.createTextNode("0 going");
+	p.appendChild(textNode);
+	DIV.appendChild(p); 
+	
+	var button = document.createElement("BUTTON"); 
+	button.onclick = rsvp; 
+	var textNode = document.createTextNode("ATTEND"); 
+	button.appendChild(textNode); 
+	DIV.appendChild(button); 
+	
+	var p = document.createElement("P"); 
+	// Change this to correspond 
+	var textNode = document.createTextNode(data[i].rating);
+	p.appendChild(textNode);
+	DIV.appendChild(p); 
+	
+	var p = document.createElement("P"); 
+	// Change this to correspond 
+	var textNode = document.createTextNode(data[i].price);
+	p.appendChild(textNode);
+	DIV.appendChild(p); 
+	
+              }
         });
     });
 })();
