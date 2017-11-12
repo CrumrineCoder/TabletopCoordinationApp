@@ -44,6 +44,12 @@
                 console.log("Yes");
             });
         }
+  
+      function remove(test) {
+            ajaxRequest('GET', apiUrl + "/api/removeRSVP/?user=" + user + "&id=" + test, function(data) {
+                console.log("Yes");
+            });
+        }
         var searchTerm = document.getElementById("searchBar");
         var buttonToSubmit = document.getElementById("findStores");
         $('#findStores').submit(function(e) {
@@ -53,10 +59,10 @@
                 var counter = 0; 
                 ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText, function(data) {
                         data = JSON.parse(data);
-                        console.log("outside");
+                          console.log(data);
                   mySyncFunction(counter);
                         function mySyncFunction(counter) {
-                             console.log(counter);
+                    
                             if (counter === undefined) {
                                 counter = 0;
                             }
@@ -65,7 +71,7 @@
                               return; 
                             };
                             ajaxRequest('GET', apiUrl + "api/getUsers/?id=" + data[counter].id, function(data) {
-                              console.log("inside");
+                           
                                 data = JSON.parse(data);
                                 users.push(data);
                                 counter++;
@@ -76,7 +82,6 @@
                             function theRest() {
                                 for (var i = 0; i < 5; i++) {
                                     console.log(users);
-                                    console.log("seocnd");
                                     var DIV = document.createElement("DIV");
                                     DIV.className = "yelpContainer";
                                     document.getElementById("display").appendChild(DIV);
@@ -91,26 +96,35 @@
                                     DIV.appendChild(A);
                                     var p = document.createElement("P");
                                     // Change this to correspond 
-                                    console.log(users);
+            
                                     var amount = users[i].length;
                                     if (amount == undefined) {
                                         amount = 0;
                                     }
-                                  console.log("amount: " + amount);
+                    
                                     var textNode = document.createTextNode(amount + " going");
                                     p.appendChild(textNode);
                                     DIV.appendChild(p);
                                     if (logged) {
                                         var button = document.createElement("BUTTON");
-                                        if (users[i].indexOf(user) != -1) {
+                                      console.log(users[i]);
+                                        if (users[i].indexOf(user) == -1) {
                                             button.onclick = function() {
                                                 rsvp(this.id);
+                                           
                                             };
+                                             var textNode = document.createTextNode("attend");
+                                        } else{
+                                          button.onclick = function() {
+                                                remove(this.id);
+                                            
+                                            };
+                                          var textNode = document.createTextNode("remove");
+                                        }
                                             button.id = data[i].id;
-                                            var textNode = document.createTextNode("attend");
+                                            
                                             button.appendChild(textNode);
                                             DIV.appendChild(button);
-                                        }
                                     }
                                     var p = document.createElement("P");
                                     // Change this to correspond 
