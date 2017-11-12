@@ -7,7 +7,7 @@ function yelpHandler(db) {
    // console.log("hello");
      var stores = storeCollection.find({id: req.query.id}, {users: 1}).toArray(function(err,doc){
         if(doc.length == 0 || doc == null){
-          res.json(0);
+          res.json([]);
         } else{
           res.json(doc[0].users);
         }  
@@ -15,7 +15,6 @@ function yelpHandler(db) {
      });
   }
   this.addRSVP = function(req, res){
-    console.log("hello?");
     var notFound;
     var userLength = 1; 
 
@@ -31,23 +30,39 @@ function yelpHandler(db) {
       }
       res.send()
     });
-  
-    /* storeCollection.find({
-            question: req.query.question
-        }, {
-            $exists: true
-        }).toArray(function(err, doc) //find if a value exists
-            {
-                if (err) throw err
-                if (doc && doc.length) //if it does
-                {
-                    res.json(doc); // print out what it sends back
-                } else // if it does not 
-                {
-                    res.json("Not in docs");
-                }
-            }); */
   }
+  
+   this.removeRSVP = function(req, res){
+    var notFound;
+    var userLength = 1; 
+
+    storeCollection.find({id: req.query.id}).limit(1).toArray(function(err,doc){
+      console.log(doc);
+      storeCollection.update(
+         {id: req.query.id},
+         //Should be a way to check if the user is already in the array
+         { $pull: { users: req.query.user } }
+        )
+      if(doc[0].users.length == 1){
+        storeCollection.deleteOne( {id: req.query.id} );
+      }
+    });
+     
+     /*storeCollection.find({id: req.query.id}, {users: 1}).limit(1).toArray(function(err,doc){
+      console.log(doc);
+       if(doc[0].users.length <=0){
+         
+       }
+      storeCollection.update(
+         {id: req.query.id},
+         //Should be a way to check if the user is already in the array
+         { $pull: { users: req.query.user } }
+        )
+    }); */
+       res.send()
+   }
+      
+ 
   const yelp = require('yelp-fusion');
   
     this.getYelp = function(req, res) {
