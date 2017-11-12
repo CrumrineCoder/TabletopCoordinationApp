@@ -21,18 +21,19 @@
   "author": "Nicolas Crumrine",
   "license": "MIT",
   "dependencies": {
+    "angular": "*",
     "express": "^4.16.2",
     "mongodb": "^2.2.33",
     "yelp-fusion": "^1.0.3",
-    "passport-local": "*",
-    "passport": "*",
-    "bcryptjs": "*",
-    "mongoose": "*",
-    "express-handlebars": "*",
-    "passport-remember-me": "*",
-    "cookie-parser": "*",
-    "express-validator": "*",
-    "connect-flash": "*",
-    "express-session": "*"
+    "passport-local": "^1.0.0",
+    "passport": "^0.4.0",
+    "bcryptjs": "^2.4.3",
+    "mongoose": "^4.13.1",
+    "express-handlebars": "^3.0.0",
+    "passport-remember-me": "^0.0.1",
+    "cookie-parser": "^1.4.3",
+    "express-validator": "^4.3.0",
+    "connect-flash": "^0.1.1",
+    "express-session": "^1.15.6"
   }
 }

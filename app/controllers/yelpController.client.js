@@ -1,5 +1,11 @@
 'use strict';
 (function() {
+
+  var app = angular.module('yelp', [ ]);
+  app.config(function($interpolateProvider) {
+  $interpolateProvider.startSymbol('{[{');
+  $interpolateProvider.endSymbol('}]}');
+});
     var DIV = document.createElement("DIV");
 
     function ready(fn) {
