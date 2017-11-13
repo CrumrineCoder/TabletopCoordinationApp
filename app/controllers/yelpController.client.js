@@ -7,11 +7,7 @@
     });
     app.controller('yelpController', function($scope) {
         console.log("Hello");
-        $scope.stores = [{
-            id: "frank"
-        }, {
-            id: "Reynolds"
-        }]
+        $scope.stores = [{id: "Pie"}];
     
     var attendButtons = [true, true, true, true, true];
     var DIV = document.createElement("DIV");
@@ -57,29 +53,13 @@
 
     function rsvp(test) {
         ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user + "&id=" + test, function(data) {
-            $("#" + test).remove();
-            var button = document.createElement("BUTTON");
-            button.onclick = function() {
-                remove(this.id);
-            };
-            var textNode = document.createTextNode("remove");
-            button.id = test;
-            button.appendChild(textNode);
-            DIV.appendChild(button);
+ 
         });
     }
 
     function remove(test) {
         ajaxRequest('GET', apiUrl + "/api/removeRSVP/?user=" + user + "&id=" + test, function(data) {
-            $("#" + test).remove();
-            var button = document.createElement("BUTTON");
-            button.onclick = function() {
-                rsvp(this.id);
-            };
-            var textNode = document.createTextNode("attend");
-            button.id = test;
-            button.appendChild(textNode);
-            DIV.appendChild(button);
+     
         });
     }
     var searchTerm = document.getElementById("searchBar");
@@ -118,7 +98,15 @@
             }
 
             function theRest() {
+                $scope.id = [];
                 for (var i = 0; i < 5; i++) {
+                   $scope.$apply(function () {
+                     $scope.stores.push({id: data[i].id});
+        });
+       
+                    console.log($scope.stores);
+                  
+                    console.log(data[i]);
                     DIV.className = "yelpContainer";
                     document.getElementById("display").appendChild(DIV);
                     var A = document.createElement("A");
