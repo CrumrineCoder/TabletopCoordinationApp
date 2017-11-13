@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
     <link href="/public/css/main.css" rel="stylesheet" type="text/css"> </head>
@@ -7,12 +7,13 @@
 <body ng-controller="yelpController" ng-app="yelp">
     <form id="findStores"> <input type="text" id="searchBar"> <button type="submit">Search</button> </form>
     <div id="display"> </div>
-      <div  ng-repeat="store in stores" style="background: red;" >
-<h1> Hello! </h1>
-<h1> {[{store.id}]} </h1>
-<h2> {[{store.id}]} </h2>
-<p> {[{store.users}]} </p>
-</div>     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <div ng-repeat="store in stores">
+        <h1> Hello! </h1>
+        <h1> {[{store.id}]} </h1>
+  <!--      <h2> {[{store.id}]} </h2>
+        <p> {[{store.users}]} </p> -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/controllers/yelpController.client.js"></script>
 </body>
