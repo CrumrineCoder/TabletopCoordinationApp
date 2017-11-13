@@ -1,11 +1,26 @@
 'use strict';
 (function() {
-
-  var app = angular.module('yelp', [ ]);
-  app.config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('{[{');
-  $interpolateProvider.endSymbol('}]}');
-});
+    var app = angular.module('yelp', []);
+    app.config(function($interpolateProvider) {
+        $interpolateProvider.startSymbol('{[{');
+        $interpolateProvider.endSymbol('}]}');
+    }); 
+  
+   function yelpController($scope){
+     $scope.stores = [
+        { name: 'Master HTML/CSS/Javascript', completed: true },
+        { name: 'Learn AngularJS', completed: false },
+        { name: 'Build NodeJS backend', completed: false },
+        { name: 'Get started with ExpressJS', completed: false },
+        { name: 'Setup MongoDB database', completed: false },
+        { name: 'Be awesome!', completed: false },
+      ]
+     
+     
+   }
+  
+  
+  var attendButtons = [true, true, true, true, true];
     var DIV = document.createElement("DIV");
 
     function ready(fn) {
@@ -83,6 +98,14 @@
         var counter = 0;
         ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText, function(data) {
             data = JSON.parse(data);
+            console.log(data);
+         /*   app.controller('yelpController', function($scope, service) {
+                $scope.dataHasLoaded = false;
+                service.loadData().then(function(data) {
+                    this.Stores = data;
+                    $scope.dataHasLoaded = true
+                })
+            })  */
             mySyncFunction(counter);
 
             function mySyncFunction(counter) {
