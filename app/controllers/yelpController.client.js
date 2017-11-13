@@ -8,7 +8,7 @@
   app.controller('yelpController', function($scope){
     console.log("Hello");
  $scope.stores = [
-       
+       {id: "frank"}, {id: "Reynolds"}
       ]
  });
 
@@ -87,6 +87,7 @@
     var buttonToSubmit = document.getElementById("findStores");
     $('#findStores').submit(function(e) {
         e.preventDefault();
+    
         var searchText = searchTerm.value;
         var users = [];
         var counter = 0;
