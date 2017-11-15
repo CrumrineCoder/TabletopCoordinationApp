@@ -58,7 +58,6 @@
             ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText, function(data) {
                 data = JSON.parse(data);
                 mySyncFunction(counter);
-
                 function mySyncFunction(counter) {
                     if (counter === undefined) {
                         counter = 0;
@@ -76,14 +75,11 @@
                 }
 
                 function rsvp(id, number) {
-                    console.log("due");
                     $('#' + id).off().on('click', function() {
                         remove(this.id, number)
                     })
                     $scope.$apply(function() {
-                        console.log($scope.stores[number].amountOfUsers);
                         $scope.stores[number].amountOfUsers += 1;
-                        console.log($scope.stores[number].amountOfUsers);
                         $scope.stores[number].buttonText = "REMOVE"
                     })
                     ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user + "&id=" + id, function(data) {});
@@ -94,9 +90,7 @@
                         rsvp(this.id, number)
                     })
                     $scope.$apply(function() {
-                        console.log($scope.stores[number].amountOfUsers);
                         $scope.stores[number].amountOfUsers -= 1;
-                        console.log($scope.stores[number].amountOfUsers);
                         $scope.stores[number].buttonText = "ATTEND"
                     })
                     ajaxRequest('GET', apiUrl + "/api/removeRSVP/?user=" + user + "&id=" + id, function(data) {});
@@ -125,7 +119,6 @@
                             if (logged) {
                                 if (users[i].indexOf(user) == -1) {
                                     $("#" + data[i].id).on("click", function() {
-                                        console.log("HI");
                                         rsvp(this.id, numb);
                                     });
                                 } else {

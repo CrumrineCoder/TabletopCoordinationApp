@@ -6,13 +6,17 @@
 
 <body ng-controller="yelpController" ng-app="yelp">
     <form id="findStores"> <input type="text" id="searchBar"> <button type="submit">Search</button> </form>
-    <div ng-repeat="store in stores"> <a ng-href="{[{store.url}]}">
-         <img ng-src="{[{store.image}]}"/>
-         <h1> {[{store.id}]} </h1>
-      </a> {{#if user}} <button id="{[{store.buttonID}]}">{[{store.buttonText}]}</button> {{/if}}
-        <p> {[{store.amountOfUsers}]} going </p>
-        <p> {[{store.price}]} </p>
-        <p> {[{store.rating}]} </p>
+    <div ng-repeat="store in stores" class="container"> 
+      <a ng-href="{[{store.url}]}">
+         <img ng-src="{[{store.image}]}" class="image"/>
+         <div class="right">
+         <h1> {[{store.name}]} </h1>
+      </a>
+        <div class="priceAndRating">
+            <p> {[{store.price}]} </p>
+            <p> {[{store.rating}]} </p>
+        </div>
+        <p> {[{store.amountOfUsers}]} going </p> {{#if user}} <button id="{[{store.buttonID}]}">{[{store.buttonText}]}</button> {{/if}} </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
