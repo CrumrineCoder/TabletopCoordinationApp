@@ -76,10 +76,10 @@
                 }
 
                 function rsvp(id, number) {
-                  console.log("due");
-                    $('#' + id).off();/*.on('click', function() {
+                    console.log("due");
+                    $('#' + id).off().on('click', function() {
                         remove(this.id, number)
-                    })*/
+                    })
                     $scope.$apply(function() {
                         console.log($scope.stores[number].amountOfUsers);
                         $scope.stores[number].amountOfUsers += 1;
@@ -90,9 +90,9 @@
                 }
 
                 function remove(id, number) {
-                    $('#' + id).off('click');/*.on('click', function() {
+                    $('#' + id).off('click').on('click', function() {
                         rsvp(this.id, number)
-                    })*/
+                    })
                     $scope.$apply(function() {
                         console.log($scope.stores[number].amountOfUsers);
                         $scope.stores[number].amountOfUsers -= 1;
@@ -124,12 +124,12 @@
                             var numb = i;
                             if (logged) {
                                 if (users[i].indexOf(user) == -1) {
-                                   $("#"+data[i].id).on("click", function() {
+                                    $("#" + data[i].id).on("click", function() {
                                         console.log("HI");
                                         rsvp(this.id, numb);
                                     });
                                 } else {
-                                    $("#"+data[i].id).on("click", function() {
+                                    $("#" + data[i].id).on("click", function() {
                                         remove(this.id, numb);
                                     });
                                 }

@@ -5,23 +5,15 @@
     <link href="/public/css/main.css" rel="stylesheet" type="text/css"> </head>
 
 <body ng-controller="yelpController" ng-app="yelp">
- <div ng-repeat="store in stores">
- <a ng-href="{[{store.url}]}">
+    <form id="findStores"> <input type="text" id="searchBar"> <button type="submit">Search</button> </form>
+    <div ng-repeat="store in stores"> <a ng-href="{[{store.url}]}">
          <img ng-src="{[{store.image}]}"/>
          <h1> {[{store.id}]} </h1>
-      </a>
-          {{#if user}}
-      <button id="{[{store.buttonID}]}">{[{store.buttonText}]}</button>
-      {{/if}}
-      <p> {[{store.amountOfUsers}]} going </p>
-      <p> {[{store.price}]} </p>
-      <p> {[{store.rating}]} </p>
-  <!--      <h2> {[{store.id}]} </h2>
-        <p> {[{store.users}]} </p> -->
+      </a> {{#if user}} <button id="{[{store.buttonID}]}">{[{store.buttonText}]}</button> {{/if}}
+        <p> {[{store.amountOfUsers}]} going </p>
+        <p> {[{store.price}]} </p>
+        <p> {[{store.rating}]} </p>
     </div>
-    <form id="findStores"> <input type="text" id="searchBar"> <button type="submit">Search</button> </form>
-    <div id="display"> </div>
-   
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/controllers/yelpController.client.js"></script>
