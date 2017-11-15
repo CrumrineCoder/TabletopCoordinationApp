@@ -76,26 +76,27 @@
                 }
 
                 function rsvp(id, number) {
-                    document.getElementById(id).removeEventListener("click", function() {
-                        rsvp(this.id, number);
-                    });
-                    document.getElementById(id).addEventListener("click", function() {
-                        remove(this.id, number);
-                    });
+                  console.log("due");
+                    $('#' + id).off();/*.on('click', function() {
+                        remove(this.id, number)
+                    })*/
                     $scope.$apply(function() {
+                        console.log($scope.stores[number].amountOfUsers);
+                        $scope.stores[number].amountOfUsers += 1;
+                        console.log($scope.stores[number].amountOfUsers);
                         $scope.stores[number].buttonText = "REMOVE"
                     })
                     ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user + "&id=" + id, function(data) {});
                 }
 
                 function remove(id, number) {
-                    document.getElementById(id).addEventListener("click", function() {
-                        rsvp(this.id, number);
-                    });
-                    document.getElementById(id).removeEventListener("click", function() {
-                        remove(this.id, number);
-                    });
+                    $('#' + id).off('click');/*.on('click', function() {
+                        rsvp(this.id, number)
+                    })*/
                     $scope.$apply(function() {
+                        console.log($scope.stores[number].amountOfUsers);
+                        $scope.stores[number].amountOfUsers -= 1;
+                        console.log($scope.stores[number].amountOfUsers);
                         $scope.stores[number].buttonText = "ATTEND"
                     })
                     ajaxRequest('GET', apiUrl + "/api/removeRSVP/?user=" + user + "&id=" + id, function(data) {});
@@ -107,7 +108,6 @@
                         if (amount == undefined) {
                             amount = 0;
                         }
-                        amount += " going";
                         data[i].amountOfUsers = amount;
                         if (logged) {
                             if (users[i].indexOf(user) == -1) {
@@ -124,11 +124,12 @@
                             var numb = i;
                             if (logged) {
                                 if (users[i].indexOf(user) == -1) {
-                                    document.getElementById(data[i].id).addEventListener("click", function() {
+                                   $("#"+data[i].id).on("click", function() {
+                                        console.log("HI");
                                         rsvp(this.id, numb);
                                     });
                                 } else {
-                                    document.getElementById(data[i].id).addEventListener("click", function() {
+                                    $("#"+data[i].id).on("click", function() {
                                         remove(this.id, numb);
                                     });
                                 }
