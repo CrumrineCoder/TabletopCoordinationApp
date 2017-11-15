@@ -48,14 +48,6 @@
                 logged = true;
             }
         });
-
-        function rsvp(test) {
-            ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user + "&id=" + test, function(data) {});
-        }
-
-        function remove(test) {
-            ajaxRequest('GET', apiUrl + "/api/removeRSVP/?user=" + user + "&id=" + test, function(data) {});
-        }
         var searchTerm = document.getElementById("searchBar");
         var buttonToSubmit = document.getElementById("findStores");
         $('#findStores').submit(function(e) {
@@ -65,7 +57,6 @@
             var counter = 0;
             ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText, function(data) {
                 data = JSON.parse(data);
-
                 mySyncFunction(counter);
 
                 function mySyncFunction(counter) {
@@ -84,50 +75,66 @@
                     })
                 }
 
+                function rsvp(id, number) {
+                  console.log("due");
+                    $('#' + id).off();/*.on('click', function() {
+                        remove(this.id, number)
+                    })*/
+                    $scope.$apply(function() {
+                        console.log($scope.stores[number].amountOfUsers);
+                        $scope.stores[number].amountOfUsers += 1;
+                        console.log($scope.stores[number].amountOfUsers);
+                        $scope.stores[number].buttonText = "REMOVE"
+                    })
+                    ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user + "&id=" + id, function(data) {});
+                }
+
+                function remove(id, number) {
+                    $('#' + id).off('click');/*.on('click', function() {
+                        rsvp(this.id, number)
+                    })*/
+                    $scope.$apply(function() {
+                        console.log($scope.stores[number].amountOfUsers);
+                        $scope.stores[number].amountOfUsers -= 1;
+                        console.log($scope.stores[number].amountOfUsers);
+                        $scope.stores[number].buttonText = "ATTEND"
+                    })
+                    ajaxRequest('GET', apiUrl + "/api/removeRSVP/?user=" + user + "&id=" + id, function(data) {});
+                }
+
                 function theRest() {
-
                     for (var i = 0; i < 5; i++) {
-
                         var amount = users[i].length;
                         if (amount == undefined) {
                             amount = 0;
                         }
-                        amount += " going";
                         data[i].amountOfUsers = amount;
-                       
                         if (logged) {
                             if (users[i].indexOf(user) == -1) {
-         
-                              data[i].buttonText = "ATTEND";
+                                data[i].buttonText = "ATTEND";
                             } else {
-
-                              data[i].buttonText = "REMOVE";
+                                data[i].buttonText = "REMOVE";
                             }
-                          data[i].buttonID = data[i].id;
+                            data[i].buttonID = data[i].id;
                         }
                         $scope.$apply(function() {
                             $scope.stores.push(data[i]);
                         });
-                      
-                      if (logged) {
-                            if (users[i].indexOf(user) == -1) {
-                         
-                             document.getElementById(data[i].id).addEventListener("click", function(){
-        rsvp(this.id);
-                    });
-                                 
-                      
-                       
-                            } else {
-                                       
-                               document.getElementById(data[i].id).addEventListener("click", function(){
-        remove(this.id);
-                    });
-                              
+                        (function() {
+                            var numb = i;
+                            if (logged) {
+                                if (users[i].indexOf(user) == -1) {
+                                   $("#"+data[i].id).on("click", function() {
+                                        console.log("HI");
+                                        rsvp(this.id, numb);
+                                    });
+                                } else {
+                                    $("#"+data[i].id).on("click", function() {
+                                        remove(this.id, numb);
+                                    });
+                                }
                             }
-                         
-                        }
-               
+                        }());
                     }
                 }
             });
