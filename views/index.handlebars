@@ -5,7 +5,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
    <body ng-controller="yelpController" ng-app="yelp">
-      <form id="findStores"> <input type="text" id="searchBar"> <button type="submit">Search</button> </form>
+      <form id="findStores"> <input type="text" id="searchBar"> <button id="searchButton" type="submit">Search</button> </form>
       <div ng-repeat="store in stores" class="yelpContainer">
          <img ng-src="{[{store.image}]}" class="image"/>
          <div class="right">
