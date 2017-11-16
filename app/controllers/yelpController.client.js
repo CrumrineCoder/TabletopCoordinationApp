@@ -36,6 +36,7 @@
         function getUser(callback) {
             ajaxRequest('GET', apiUrl + "users/user_data", function(data) {
                 data = JSON.parse(data);
+              
                 if (data.hasOwnProperty('username')) {
                     user = data.username;
                 }
@@ -57,6 +58,7 @@
             var counter = 0;
             ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText, function(data) {
                 data = JSON.parse(data);
+              console.log(data);
                 mySyncFunction(counter);
                 function mySyncFunction(counter) {
                     if (counter === undefined) {

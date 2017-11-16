@@ -2,53 +2,70 @@
 
 function yelpHandler(db) {
     var storeCollection = db.collection('store');
-  
-  this.getUsers = function(req,res){
-   // console.log("hello");
-     var stores = storeCollection.find({id: req.query.id}, {users: 1}).toArray(function(err,doc){
-        if(doc.length == 0 || doc == null){
-          res.json([]);
-        } else{
-          res.json(doc[0].users);
-        }  
-     
-     });
-  }
-  this.addRSVP = function(req, res){
-    var notFound;
-    var userLength = 1; 
-
-    var stores = storeCollection.find({id: req.query.id}, {id: 1}).limit(1).toArray(function(err,doc){
-      if(doc.length == 0 || doc == null){
-        storeCollection.insertOne({ id: req.query.id, users: [req.query.user]});
-      } else{
-       storeCollection.update(
-         {id: req.query.id},
-         //Should be a way to check if the user is already in the array
-         { $push: { users: req.query.user } }
-        )
-      }
-      res.send()
-    });
-  }
-  
-   this.removeRSVP = function(req, res){
-    var notFound;
-    var userLength = 1; 
-
-    storeCollection.find({id: req.query.id}).limit(1).toArray(function(err,doc){
-      console.log(doc);
-      storeCollection.update(
-         {id: req.query.id},
-         //Should be a way to check if the user is already in the array
-         { $pull: { users: req.query.user } }
-        )
-      if(doc[0].users.length == 1){
-        storeCollection.deleteOne( {id: req.query.id} );
-      }
-    });
-     
-     /*storeCollection.find({id: req.query.id}, {users: 1}).limit(1).toArray(function(err,doc){
+    this.getUsers = function(req, res) {
+        // console.log("hello");
+        var stores = storeCollection.find({
+            id: req.query.id
+        }, {
+            users: 1
+        }).toArray(function(err, doc) {
+            if (doc.length == 0 || doc == null) {
+                res.json([]);
+            } else {
+                res.json(doc[0].users);
+            }
+        });
+    }
+    this.addRSVP = function(req, res) {
+        var notFound;
+        var userLength = 1;
+        var stores = storeCollection.find({
+            id: req.query.id
+        }, {
+            id: 1
+        }).limit(1).toArray(function(err, doc) {
+            if (doc.length == 0 || doc == null) {
+                storeCollection.insertOne({
+                    id: req.query.id,
+                    users: [req.query.user]
+                });
+            } else {
+                storeCollection.update({
+                        id: req.query.id
+                    },
+                    //Should be a way to check if the user is already in the array
+                    {
+                        $push: {
+                            users: req.query.user
+                        }
+                    })
+            }
+            res.send()
+        });
+    }
+    this.removeRSVP = function(req, res) {
+        var notFound;
+        var userLength = 1;
+        storeCollection.find({
+            id: req.query.id
+        }).limit(1).toArray(function(err, doc) {
+            console.log(doc);
+            storeCollection.update({
+                    id: req.query.id
+                },
+                //Should be a way to check if the user is already in the array
+                {
+                    $pull: {
+                        users: req.query.user
+                    }
+                })
+            if (doc[0].users.length == 1) {
+                storeCollection.deleteOne({
+                    id: req.query.id
+                });
+            }
+        });
+        /*storeCollection.find({id: req.query.id}, {users: 1}).limit(1).toArray(function(err,doc){
       console.log(doc);
        if(doc[0].users.length <=0){
          
@@ -59,12 +76,9 @@ function yelpHandler(db) {
          { $pull: { users: req.query.user } }
         )
     }); */
-       res.send()
-   }
-      
- 
-  const yelp = require('yelp-fusion');
-  
+        res.send()
+    }
+    const yelp = require('yelp-fusion');
     this.getYelp = function(req, res) {
         var location = req.query.location;
         yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
@@ -83,6 +97,8 @@ function yelpHandler(db) {
             }).then(response => {
                 var add = {};
                 for (var i = 0; i < 5; i++) {
+                    add.city = response.jsonBody.businesses[i].location.city;
+                    add.address = response.jsonBody.businesses[i].location.display_address[0];
                     add.id = response.jsonBody.businesses[i].id;
                     add.name = response.jsonBody.businesses[i].name;
                     add.image = response.jsonBody.businesses[i].image_url;
@@ -99,8 +115,7 @@ function yelpHandler(db) {
             });
         }
     }
-    
-     this.checkExistance = function(req, res) {
+    this.checkExistance = function(req, res) {
         storeCollection.find({
             question: req.query.question
         }, {
@@ -116,7 +131,6 @@ function yelpHandler(db) {
                     res.json("Not in docs");
                 }
             });
-
     }
 }
 module.exports = yelpHandler;
