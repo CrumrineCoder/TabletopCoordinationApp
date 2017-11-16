@@ -23,6 +23,10 @@ body {
   margin-top: 5px; 
 }
 
+.rsvp{
+  width: 150px; 
+}
+
 .fa{
   text-align: center; 
   color: #FF5251; 
@@ -68,3 +72,4 @@ button:hover{
 #findStores{
   text-align: center; 
 }
+
