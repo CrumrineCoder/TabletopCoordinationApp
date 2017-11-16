@@ -1,3 +1,4 @@
+
 'use strict';
 
 var YelpHandler = require(process.cwd() + '/app/controllers/yelpHandler.server.js');
@@ -17,9 +18,5 @@ module.exports = function (app, db) {
     .get(yelpHandler.getUsers)
   app.route('/api/yelp/?')
     .get(yelpHandler.getYelp)
- /*  app.route('/api/clicks')
-      .get(clickHandler.getClicks)
-      .post(clickHandler.addClick)
-      .delete(clickHandler.resetClicks);*/
 };
   

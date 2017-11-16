@@ -177,4 +177,4 @@ router.get('/logout', function(req, res) {
     res.redirect('/users/login');
 });
 
-module.exports = router;
+module.exports = router; 

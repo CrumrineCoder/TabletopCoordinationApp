@@ -1,3 +1,4 @@
+
 'use strict';
 
 function yelpHandler(db) {
@@ -65,17 +66,6 @@ function yelpHandler(db) {
                 });
             }
         });
-        /*storeCollection.find({id: req.query.id}, {users: 1}).limit(1).toArray(function(err,doc){
-      console.log(doc);
-       if(doc[0].users.length <=0){
-         
-       }
-      storeCollection.update(
-         {id: req.query.id},
-         //Should be a way to check if the user is already in the array
-         { $pull: { users: req.query.user } }
-        )
-    }); */
         res.send()
     }
     const yelp = require('yelp-fusion');
