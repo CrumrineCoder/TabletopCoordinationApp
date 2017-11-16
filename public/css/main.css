@@ -11,9 +11,16 @@ body {
   margin-bottom: 10px; 
 }
 
+#searchButton{
+  height: 32px; 
+}
 
 .right{
   margin-left: 240px; 
+}
+
+.right *{
+  margin-top: 5px; 
 }
 
 .fa{
@@ -33,14 +40,31 @@ body {
 
 .yelpContainer{
   clear: both; 
-  margin-bottom: 40px; 
+  margin-bottom: 20px; 
  
   height: 225px; 
 }
 
 h3{
   margin: 0; 
-  
+  color: #696969; 
 }
 
 p{margin: 0px; }
+
+button{
+  background: #FF5251;
+  color: white;
+  font-style: bold;
+  border: none; 
+  
+}
+button:focus {outline:0;}
+
+button:hover{
+  background: #C23E3E;
+}
+
+#findStores{
+  text-align: center; 
+}
