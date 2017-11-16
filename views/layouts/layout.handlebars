@@ -11,9 +11,9 @@
             <nav class="navbar navbar-default" role="navigation">
                <div class="container-fluid">
         
-                  <ul class="nav nav-pills navbar-right">
+                  <ul class="nav nav-pills">
+                       <li role="presentation" ><a href="/">Home</a></li>
                         {{#if user}}
-                        <li role="presentation" ><a href="/users/dashboard">Dashboard</a></li>
                         <li role="presentation"><a href="/users/logout">Logout</a></li>
                         {{else}}
                         <li role="presentation" ><a href="/users/login">Login</a></li>
