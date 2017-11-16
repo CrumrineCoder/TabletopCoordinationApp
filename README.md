@@ -1,9 +1,6 @@
 # Tabletop Coordination App
 
-One Paragraph of project description goes here
-
-
-Add additional notes about how to deploy this on a live system
+A website that utilizes the Yelp API and a database to coordinate going to tabletop shops.
 
 ## Built With
 
