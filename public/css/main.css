@@ -7,12 +7,45 @@ body {
    background: #F2F2F2;
 }
 
+
+button{
+  background: #FF5251;
+  color: white;
+  font-style: bold;
+  border: none; 
+  
+}
+
+button:focus {outline:0;}
+
+button:hover{
+  background: #C23E3E;
+}
+
+/* Nav Bar */
+
+
+/* Search Bar */
+
 #searchBar{
   margin-bottom: 10px; 
 }
 
 #searchButton{
   height: 32px; 
+}
+
+#findStores{
+  text-align: center; 
+}
+
+/* Yelp */
+
+.yelpContainer{
+  clear: both; 
+  margin-bottom: 20px; 
+ 
+  height: 225px; 
 }
 
 .right{
@@ -23,8 +56,10 @@ body {
   margin-top: 5px; 
 }
 
-.rsvp{
-  width: 150px; 
+.image{
+  float: left; 
+  width: 225px; 
+  height: 225px; 
 }
 
 .fa{
@@ -36,19 +71,6 @@ body {
   color: #C23E3E; 
 }
 
-.image{
-  float: left; 
-  width: 225px; 
-  height: 225px; 
-}
-
-.yelpContainer{
-  clear: both; 
-  margin-bottom: 20px; 
- 
-  height: 225px; 
-}
-
 h3{
   margin: 0; 
   color: #696969; 
@@ -56,20 +78,20 @@ h3{
 
 p{margin: 0px; }
 
-button{
-  background: #FF5251;
-  color: white;
-  font-style: bold;
-  border: none; 
-  
-}
-button:focus {outline:0;}
-
-button:hover{
-  background: #C23E3E;
+.rsvp{
+  width: 150px; 
 }
 
-#findStores{
-  text-align: center; 
-}
+
+
+
+
+
+
+
+
+
+
+
+
 
