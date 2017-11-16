@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <link href="/public/css/main.css" rel="stylesheet" type="text/css"> </head>
-
-<body ng-controller="yelpController" ng-app="yelp">
-    <form id="findStores"> <input type="text" id="searchBar"> <button type="submit">Search</button> </form>
-    <div ng-repeat="store in stores" class="container"> <a ng-href="{[{store.url}]}">
+   <head>
+      <link href="/public/css/main.css" rel="stylesheet" type="text/css" >
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body ng-controller="yelpController" ng-app="yelp">
+      <form id="findStores"> <input type="text" id="searchBar"> <button type="submit">Search</button> </form>
+      <div ng-repeat="store in stores" class="yelpContainer">
          <img ng-src="{[{store.image}]}" class="image"/>
-         <h2> {[{store.name}]} </h2>
-         <p> {[{store.address}]}, {[{store.city}]} </p>
-      </a>
-        <p> Rating: {[{store.rating}]} / 5 </p>
-        <p> {[{store.price}]} </p>
-        
-        <p> {[{store.amountOfUsers}]} going </p> {{#if user}} <button id="{[{store.buttonID}]}">{[{store.buttonText}]}</button> {{/if}} </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/controllers/yelpController.client.js"></script>
-</body>
-
+         <div class="right">
+            <a ng-href="{[{store.url}]}" class="fa fa-external-link" > View on Yelp
+            </a>
+            <h3> {[{store.name}]} </h3>
+            <p> {[{store.address}]}, {[{store.city}]} </p>
+            <p> Rating: {[{store.rating}]} / 5 </p>
+            <p> {[{store.price}]} </p>
+            <p> {[{store.amountOfUsers}]} going </p>
+            {{#if user}} <button id="{[{store.buttonID}]}">{[{store.buttonText}]}</button> {{/if}} 
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+      <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="/controllers/yelpController.client.js"></script>
+   </body>
 </html>
