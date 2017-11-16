@@ -12,7 +12,7 @@ A website that utilizes the Yelp API and a database to coordinate going to table
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
