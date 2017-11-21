@@ -6,7 +6,8 @@
    </head>
    <body ng-controller="yelpController" ng-app="yelp">
       <form id="findStores"> <input type="text" id="searchBar"> <button id="searchButton" type="submit">Search</button> </form>
-      <div ng-repeat="store in stores" class="yelpContainer">
+     <div id="stores">
+       <div ng-repeat="store in stores" class="yelpContainer">
          <img ng-src="{[{store.image}]}" class="image"/>
          <div class="right">
             <a ng-href="{[{store.url}]}" class="fa fa-external-link" > View on Yelp
@@ -18,7 +19,8 @@
             <p> {[{store.amountOfUsers}]} going </p>
             {{#if user}} <button class="rsvp" id="{[{store.buttonID}]}">{[{store.buttonText}]}</button> {{/if}} 
          </div>
-      </div>
+       </div>
+     </div>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
       <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script type="text/javascript" src="/controllers/yelpController.client.js"></script>

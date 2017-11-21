@@ -86,7 +86,7 @@ function yelpHandler(db) {
                 location: location
             }).then(response => {
                 var add = {};
-                for (var i = 0; i < 5; i++) {
+                for (var i = 0; i < 6; i++) {
                     add.city = response.jsonBody.businesses[i].location.city;
                     add.address = response.jsonBody.businesses[i].location.display_address[0];
                     add.id = response.jsonBody.businesses[i].id;

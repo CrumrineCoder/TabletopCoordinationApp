@@ -65,7 +65,7 @@
                     if (counter === undefined) {
                         counter = 0;
                     }
-                    if (counter >= 5) {
+                    if (counter >= 6) {
                         theRest();
                         return;
                     };
@@ -100,7 +100,7 @@
                 }
 
                 function theRest() {
-                    for (var i = 0; i < 5; i++) {
+                    for (var i = 0; i < 6; i++) {
                         var amount = users[i].length;
                         if (amount == undefined) {
                             amount = 0;

@@ -2,7 +2,7 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
-	font-size: 18px;
+	font-size: 16px;
   colo: #B8B8B8; 
    background: #F2F2F2;
 }
@@ -41,11 +41,17 @@ button:hover{
 
 /* Yelp */
 
+#stores{
+    -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+}
 .yelpContainer{
   clear: both; 
   margin-bottom: 20px; 
  
   height: 225px; 
+
 }
 
 .right{
@@ -95,3 +101,10 @@ p{margin: 0px; }
 
 
 
+@media only screen and (max-width: 800px) {
+  #stores{
+    -moz-column-count: 1;
+  -webkit-column-count: 1;
+  column-count: 1;
+}
+}
