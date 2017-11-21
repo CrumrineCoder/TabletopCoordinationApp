@@ -88,17 +88,17 @@ p{margin: 0px; }
   width: 150px; 
 }
 
+.remove{
+  background: white; 
+  color: #FF5251; 
+  border: 1px solid #C23E3E;
+}
 
-
-
-
-
-
-
-
-
-
-
+.remove:hover{
+   color: #FF5251; 
+  border: 1px solid #C23E3E;
+  background: #DFE8CC; 
+}
 
 
 @media only screen and (max-width: 800px) {

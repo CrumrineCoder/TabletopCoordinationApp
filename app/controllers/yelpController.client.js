@@ -53,13 +53,14 @@
         var searchTerm = document.getElementById("searchBar");
         var buttonToSubmit = document.getElementById("findStores");
         $('#findStores').submit(function(e) {
+               $scope.stores = [];
             e.preventDefault();
             var searchText = searchTerm.value;
             var users = [];
             var counter = 0;
             ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText, function(data) {
                 data = JSON.parse(data);
-              console.log(data);
+      
                 mySyncFunction(counter);
                 function mySyncFunction(counter) {
                     if (counter === undefined) {
@@ -81,9 +82,13 @@
                     $('#' + id).off().on('click', function() {
                         remove(this.id, number)
                     })
+                    
+                  $("#"+$scope.stores[number].buttonID).toggleClass( "remove" );
+             
                     $scope.$apply(function() {
                         $scope.stores[number].amountOfUsers += 1;
-                        $scope.stores[number].buttonText = "REMOVE"
+                        $scope.stores[number].buttonText = "REMOVE";
+                      //  $scope.stores[number].css("opacity", "0.6");
                     })
                     ajaxRequest('GET', apiUrl + "/api/addRSVP/?user=" + user + "&id=" + id, function(data) {});
                 }
@@ -92,9 +97,12 @@
                     $('#' + id).off('click').on('click', function() {
                         rsvp(this.id, number)
                     })
+                    $("#"+$scope.stores[number].buttonID).toggleClass( "remove" );
+   
+              
                     $scope.$apply(function() {
                         $scope.stores[number].amountOfUsers -= 1;
-                        $scope.stores[number].buttonText = "ATTEND"
+                        $scope.stores[number].buttonText = "ATTEND";
                     })
                     ajaxRequest('GET', apiUrl + "/api/removeRSVP/?user=" + user + "&id=" + id, function(data) {});
                 }
@@ -111,6 +119,7 @@
                                 data[i].buttonText = "ATTEND";
                             } else {
                                 data[i].buttonText = "REMOVE";
+                        
                             }
                             data[i].buttonID = data[i].id;
                         }
@@ -125,6 +134,7 @@
                                         rsvp(this.id, numb);
                                     });
                                 } else {
+                                    $("#"+data[i].id).toggleClass( "remove" );
                                     $("#" + data[i].id).on("click", function() {
                                         remove(this.id, numb);
                                     });
