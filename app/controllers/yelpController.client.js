@@ -8,8 +8,8 @@
     });
     app.controller('yelpController', function($scope) {
         $scope.stores = [];
-        var attendButtons = [true, true, true, true, true];
-        var DIV = document.createElement("DIV");
+  
+
 
         function ready(fn) {
             if (typeof fn !== 'function') {
