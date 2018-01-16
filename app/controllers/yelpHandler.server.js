@@ -2,14 +2,16 @@
 'use strict';
 
 function yelpHandler(db) {
+	// Get all stores currently logged in the database. 
     var storeCollection = db.collection('store');
     this.getUsers = function(req, res) {
-        // console.log("hello");
+        // Find all stores by the ID provided that has a user in it
         var stores = storeCollection.find({
             id: req.query.id
         }, {
             users: 1
         }).toArray(function(err, doc) {
+			// Return the results of the search; if there's nothing say there's nothing. If so
             if (doc.length == 0 || doc == null) {
                 res.json([]);
             } else {
@@ -17,6 +19,7 @@ function yelpHandler(db) {
             }
         });
     }
+	// Add the user to the collection of users going to a store
     this.addRSVP = function(req, res) {
         var notFound;
         var userLength = 1;
@@ -44,6 +47,7 @@ function yelpHandler(db) {
             res.send()
         });
     }
+// Remove the user from the collection of users going to a store
     this.removeRSVP = function(req, res) {
         var notFound;
         var userLength = 1;
@@ -68,6 +72,7 @@ function yelpHandler(db) {
         });
         res.send()
     }
+// Get the Yelp data from a database search
     const yelp = require('yelp-fusion');
     this.getYelp = function(req, res) {
         var location = req.query.location;
@@ -105,7 +110,8 @@ function yelpHandler(db) {
             });
         }
     }
-    this.checkExistance = function(req, res) {
+// Check if a store is in the store collection
+ this.checkExistance = function(req, res) {
         storeCollection.find({
             question: req.query.question
         }, {

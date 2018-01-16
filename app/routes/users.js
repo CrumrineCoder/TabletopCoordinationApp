@@ -59,6 +59,7 @@ router.post('/register', function(req, res) {
             errors: errors
         });
     } else {
+      // Create a new user
         var newUser = new User({
             name: name,
             email: email,
@@ -76,6 +77,7 @@ router.post('/register', function(req, res) {
     }
 });
 
+// Passport invalidation
 passport.use(new LocalStrategy(
     function(username, password, done) {
         User.getUserByUsername(username, function(err, user) {
@@ -99,6 +101,7 @@ passport.use(new LocalStrategy(
         });
     }));
 
+// Remember the user with a token
 passport.use(new RememberMeStrategy(
     function(token, done) {
         Token.consume(token, function(err, user) {
