@@ -29,10 +29,12 @@ button:hover{
 
 #searchBar{
   margin-bottom: 10px; 
+  width: 50%;
 }
 
 #searchButton{
-  height: 32px; 
+  height: 30px;
+  margin-bottom: 10px;
 }
 
 #findStores{
@@ -107,4 +109,12 @@ p{margin: 0px; }
   -webkit-column-count: 1;
   column-count: 1;
 }
+  #searchBar{
+    width: 400px; 
+  }
+}
+@media only screen and (max-width: 800px) {
+  button{
+    width: 100%;
+  }
 }
