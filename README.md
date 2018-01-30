@@ -1,6 +1,8 @@
 # Tabletop Coordination App
 
-A website that utilizes the Yelp API and a database to coordinate going to tabletop shops.
+This is a fullstack webiste that allows user to search for Tabletop shops in an area. The website not only shows information about the shops but also how many users from the site are planning to go there. Users who are logged in can RSVP.
+
+This was built as part of FreeCodeCamp's backend curriculum. I changed it from finding bars to finding Tabletop shops. I had to teach myself Angular for this project and learned how to incorporate an API with a database. I dislike how impersonal the site feels right now and I'm going to work on making it more sociably friendly once I find my Muse.
 
 ## User Stories
 
