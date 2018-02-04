@@ -3,7 +3,6 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
-  colo: #B8B8B8; 
    background: #F2F2F2;
 }
 
@@ -11,7 +10,7 @@ body {
 button{
   background: #FF5251;
   color: white;
-  font-style: bold;
+  font-weight: bold;
   border: none; 
   
 }
@@ -112,9 +111,27 @@ p{margin: 0px; }
   #searchBar{
     width: 400px; 
   }
-}
-@media only screen and (max-width: 800px) {
   button{
     width: 100%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .image{
+  float: none;
+  display: block;
+    position: relative;
+    margin: 0 auto;
+  }
+  .right{
+  margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+  .yelpContainer{
+    clear: none;
+    height: auto;
+  }
+  #searchBar{
+    width: 100%; 
   }
 }
