@@ -1,4 +1,4 @@
-# Tabletop Coordination App
+# Tabletop United
 
 This is a fullstack webiste that allows user to search for Tabletop shops in an area. The website not only shows information about the shops but also how many users from the site are planning to go there. Users who are logged in can RSVP.
 
