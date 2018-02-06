@@ -1,4 +1,4 @@
-# Tabletop Coordination App
+# Tabletop United
 
 A website that utilizes the Yelp API and a database to coordinate going to tabletop shops.
 
