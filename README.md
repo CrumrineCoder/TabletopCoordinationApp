@@ -1,6 +1,8 @@
 # Tabletop United
 
-A website that utilizes the Yelp API and a database to coordinate going to tabletop shops. The Geolocation API is used to get the location of the user should they want to use their IP to see nearby shops. 
+This is a fullstack webiste that allows user to search for Tabletop shops in an area. The website not only shows information about the shops but also how many users from the site are planning to go there. Users who are logged in can RSVP. The Geolocation API is used to find stores near the user should they want to search by their IP.
+
+This was built as part of FreeCodeCamp's backend curriculum. I changed it from finding bars to finding Tabletop shops. I had to teach myself Angular for this project and learned how to incorporate an API with a database. I dislike how impersonal the site feels right now and I'm going to work on making it more sociably friendly once I find my Muse.
 
 ## User Stories
 
