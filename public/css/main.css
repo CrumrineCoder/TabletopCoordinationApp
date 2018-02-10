@@ -1,137 +1,125 @@
 /****** Main Styling ******/
-
-body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-   background: #F2F2F2;
+ body {
+     font-family: 'Roboto', sans-serif;
+     font-size: 16px;
+     background: #F2F2F2;
 }
-
-
-button{
-  background: #FF5251;
-  color: white;
-  font-weight: bold;
-  border: none; 
-  
+ button{
+     background: #FF5251;
+     color: white;
+     font-weight: bold;
+     border: none;
 }
-
-button:focus {outline:0;}
-
-button:hover{
-  background: #C23E3E;
+ button:focus {
+    outline:0;
 }
-
+ button:hover{
+     background: #C23E3E;
+}
 /* Nav Bar */
-
-
 /* Search Bar */
-
-#searchBar{
-  margin-bottom: 10px; 
-  width: 50%;
+#searchByIP{
+	margin:  auto; 
+	display: block; 
+	margin-bottom: 5px; 
 }
 
-#searchButton{
-  height: 30px;
-  margin-bottom: 10px;
+ #searchBar{
+     margin-bottom: 10px;
+     width: 60%;
+	 font-size: 14px; 
+	 height: 25px;
 }
-
-#findStores{
-  text-align: center; 
+ #searchButton{
+     height: 25px;
+     margin-bottom: 10px;
 }
-
+ #findStores{
+     text-align: center;
+}
 /* Yelp */
-
-#stores{
-    -moz-column-count: 2;
-  -webkit-column-count: 2;
-  column-count: 2;
+ #stores{
+     -moz-column-count: 2;
+     -webkit-column-count: 2;
+     column-count: 2;
 }
-.yelpContainer{
-  clear: both; 
-  margin-bottom: 20px; 
- 
-  height: 225px; 
+ .yelpContainer{
+     clear: both;
+     margin-bottom: 20px;
+     height: 225px;
+	 background: #E3E3E3;
+	border: #787878 2px solid;
 
 }
-
-.right{
-  margin-left: 240px; 
+ .right{
+     margin-left: 240px;
 }
-
-.right *{
-  margin-top: 5px; 
+ .right *{
+     margin-top: 5px;
 }
-
-.image{
-  float: left; 
-  width: 225px; 
-  height: 225px; 
+ .image{
+     float: left;
+     width: 222px;
+     height: 222px;
 }
-
-.fa{
-  text-align: center; 
-  color: #FF5251; 
+ .fa{
+     text-align: center;
+     color: #FF5251;
 }
-
-.fa:hover{
-  color: #C23E3E; 
+ .fa:hover{
+     color: #C23E3E;
 }
-
-h3{
-  margin: 0; 
-  color: #696969; 
+ h3{
+     margin: 0;
+     color: #696969;
 }
-
-p{margin: 0px; }
-
-.rsvp{
-  width: 150px; 
+ p{
+    margin: 0px;
 }
-
-.remove{
-  background: white; 
-  color: #FF5251; 
-  border: 1px solid #C23E3E;
+ .rsvp{
+     width: 150px;
 }
-
-.remove:hover{
-   color: #FF5251; 
-  border: 1px solid #C23E3E;
-  background: #DFE8CC; 
+ .remove{
+     background: white;
+     color: #FF5251;
+     border: 1px solid #C23E3E;
 }
-
-
-@media only screen and (max-width: 800px) {
-  #stores{
-    -moz-column-count: 1;
-  -webkit-column-count: 1;
-  column-count: 1;
+ .remove:hover{
+     color: #FF5251;
+     border: 1px solid #C23E3E;
+     background: #DFE8CC;
 }
-  #searchBar{
-    width: 400px; 
-  }
-  button{
-    width: 100%;
-  }
+ @media only screen and (max-width: 1000px) {
+     #stores{
+         -moz-column-count: 1;
+         -webkit-column-count: 1;
+         column-count: 1;
+    }
+     #searchBar{
+         width: 100%; 
+		 font-size: 12px; 
+    }
+     button{
+         width: 100%;
+    }
 }
-@media only screen and (max-width: 500px) {
-  .image{
-  float: none;
-  display: block;
-    position: relative;
-    margin: 0 auto;
-  }
-  .right{
-  margin: 0 auto;
-    width: 100%;
-    text-align: center;
-  }
-  .yelpContainer{
-    clear: none;
-    height: auto;
-  }
-  #searchBar{
-    width: 100%; 
-  }
+ @media only screen and (max-width: 500px) {
+     .image{
+         float: none;
+         display: block;
+         position: relative;
+         margin: 0 auto;
+    }
+     .right{
+         margin: 0 auto;
+         width: 100%;
+         text-align: center;
+    }
+     .yelpContainer{
+         clear: none;
+         height: auto;
+    }
+     #searchBar{
+         font-size: 11px; 
+    }
 }
