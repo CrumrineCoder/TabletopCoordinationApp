@@ -1,6 +1,6 @@
 # Tabletop United
 
-This is a fullstack webiste that allows user to search for Tabletop shops in an area. The website not only shows information about the shops but also how many users from the site are planning to go there. Users who are logged in can RSVP.
+This is a fullstack webiste that allows user to search for Tabletop shops in an area. The website not only shows information about the shops but also how many users from the site are planning to go there. Users who are logged in can RSVP. The Geolocation API is used to find stores near the user should they want to search by their IP.
 
 This was built as part of FreeCodeCamp's backend curriculum. I changed it from finding bars to finding Tabletop shops. I had to teach myself Angular for this project and learned how to incorporate an API with a database. I dislike how impersonal the site feels right now and I'm going to work on making it more sociably friendly once I find my Muse.
 
@@ -18,6 +18,7 @@ This was built as part of FreeCodeCamp's backend curriculum. I changed it from f
 * User Story: Changed bar to tabletop because I'm not 21. 
 * User Story: I can view the Yelp article for the Yelp articles
 * User Story: I can get the basic info just from this website alone. 
+* Use Story:  The user can click a button to check stores nearest them by IP with the Geolocation API
 
 ## Built With
 
@@ -27,6 +28,7 @@ This was built as part of FreeCodeCamp's backend curriculum. I changed it from f
 * [Angular](https://angularjs.org/) - Used to display data.
 * [mLabs](https://mlab.com/) - Data host.
 * [Handlebars](http://handlebarsjs.com/) - HTML view engine template
+* [Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro) - The api used to get the location of the User based on their IP.
 
 
 ## License
