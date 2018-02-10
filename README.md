@@ -1,6 +1,6 @@
 # Tabletop United
 
-A website that utilizes the Yelp API and a database to coordinate going to tabletop shops.
+A website that utilizes the Yelp API and a database to coordinate going to tabletop shops. The Geolocation API is used to get the location of the user should they want to use their IP to see nearby shops. 
 
 ## User Stories
 
@@ -16,6 +16,7 @@ A website that utilizes the Yelp API and a database to coordinate going to table
 * User Story: Changed bar to tabletop because I'm not 21. 
 * User Story: I can view the Yelp article for the Yelp articles
 * User Story: I can get the basic info just from this website alone. 
+* Use Story:  The user can click a button to check stores nearest them by IP with the Geolocation API
 
 ## Built With
 
@@ -25,6 +26,7 @@ A website that utilizes the Yelp API and a database to coordinate going to table
 * [Angular](https://angularjs.org/) - Used to display data.
 * [mLabs](https://mlab.com/) - Data host.
 * [Handlebars](http://handlebarsjs.com/) - HTML view engine template
+* [Geolocation API](https://developers.google.com/maps/documentation/geolocation/intro) - The api used to get the location of the User based on their IP.
 
 
 ## License
