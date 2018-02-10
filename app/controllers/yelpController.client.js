@@ -1,4 +1,8 @@
 'use strict';
+
+
+
+
 (function() {
     // Angular module set up
     var app = angular.module('yelp', []);
@@ -9,6 +13,8 @@
     });
     // Set up the controller
     app.controller('yelpController', function($scope) {
+		
+
         // This is where we store everything we need to display to the user
         $scope.stores = [];
         // Do something as soon as the page loads
@@ -53,14 +59,12 @@
         });
         var searchTerm = document.getElementById("searchBar");
         var buttonToSubmit = document.getElementById("findStores");
-        // Event listener for the form submission
-        $('#findStores').submit(function(e) {
-            // Reset the variable holding the stuff to display everytime. If this line wasn't here we would only be adding to stuff on screen without removing the past search results. 
+		
+		function search(searchText){
+			// Reset the variable holding the stuff to display everytime. If this line wasn't here we would only be adding to stuff on screen without removing the past search results. 
             $scope.stores = [];
-            // Stop the form from default submission
-            e.preventDefault();
-            // Get the term the user searched for 
-            var searchText = searchTerm.value;
+
+			// Other resets
             var users = [];
             var counter = 0;
             // Get the locations for the Yelp API
@@ -151,6 +155,31 @@
                     }
                 }
             });
+		}
+        // Event listener for the form submission
+        $('#findStores').submit(function(e) {
+			// Stop the form from default submission
+            e.preventDefault();
+			search(searchTerm.value);
+            
         });
+		$('#searchByIP').click(function() {
+			console.log("help");
+			navigator.geolocation.getCurrentPosition(function(position){
+				// API stuff
+				var lat = position.coords.latitude;
+				var long = position.coords.longitude;
+				var for_key = "813195e09d571d569dfc52a878bea90c";
+				var apikey = "AIzaSyDCZSr-AlvZAUyBbAytuXVfVlkoGDLkFYA";
+				var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + "," + long + "&key=" + apikey;
+				var for_call = "https://api.forecast.io/forecast/" + for_key + "/" + lat + "," + long + "?callback=?";
+				$.getJSON(GEOCODING, function(json) {
+					// get location 
+					var address = json.results[2].formatted_address;
+					search(address);
+				}); 
+			});
+			search(searchTerm.value);
+		});
     });
 })();
