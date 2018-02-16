@@ -7,7 +7,7 @@
    <body ng-controller="yelpController" ng-app="yelp">
       
       <form id="findStores"> <input type="text" id="searchBar" placeholder = "Search for tabletop stores by location; Be specific."> <button id="searchButton" type="submit">Search</button> </form>
-	  
+	  <button class="submitButton" id="searchByIP"> Search By Your IP (wait a few seconds)</button>
      <div id="stores">
        <div ng-repeat="store in stores" class="yelpContainer">
          <img ng-src="{[{store.image}]}" class="image"/>
@@ -23,7 +23,7 @@
          </div>
        </div>
      </div>
-	 <button class="submitButton" id="searchByIP"> Search By Your IP (wait a few seconds)</button>
+	 
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
       <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script type="text/javascript" src="/controllers/yelpController.client.js"></script>
