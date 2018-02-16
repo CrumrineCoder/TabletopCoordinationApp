@@ -164,7 +164,6 @@
             
         });
 		$('#searchByIP').click(function() {
-			console.log("help");
 			navigator.geolocation.getCurrentPosition(function(position){
 				// API stuff
 				var lat = position.coords.latitude;
