@@ -16,9 +16,8 @@ This was built as part of FreeCodeCamp's backend curriculum. I changed it from f
 ### Personal User Stories
 
 * User Story: Changed bar to tabletop because I'm not 21. 
-* User Story: I can view the Yelp article for the Yelp articles
-* User Story: I can get the basic info just from this website alone. 
-* Use Story:  The user can click a button to check stores nearest them by IP with the Geolocation API
+* User Story: I can search based on my IP for easy access.
+* User Story: Basic info consists of: yelp article link, name of the place, location, rating, and price.
 
 ## Built With
 
