@@ -75,14 +75,21 @@ function yelpHandler(db) {
 // Get the Yelp data from a database search
     const yelp = require('yelp-fusion');
     this.getYelp = function(req, res) {
+
         var location = req.query.location;
-        yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
+      console.log("Location: " + location);
+     /*   yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
             const token = response.jsonBody.access_token;
             const client = yelp.client(token);
             processData(client, location);
         }).catch(e => {
             console.log(e);
-        });
+        }); */
+
+      const client = yelp.client(process.env.clientSecret);
+    console.log(location);
+      processData(client, location);
+       
         var businesses = [];
 
         function processData(client, location) {
