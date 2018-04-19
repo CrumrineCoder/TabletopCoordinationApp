@@ -54,7 +54,6 @@ function yelpHandler(db) {
         storeCollection.find({
             id: req.query.id
         }).limit(1).toArray(function(err, doc) {
-            console.log(doc);
             storeCollection.update({
                     id: req.query.id
                 },
@@ -77,7 +76,7 @@ function yelpHandler(db) {
     this.getYelp = function(req, res) {
 
         var location = req.query.location;
-      console.log("Location: " + location);
+   
      /*   yelp.accessToken(process.env.clientId, process.env.clientSecret).then(response => {
             const token = response.jsonBody.access_token;
             const client = yelp.client(token);
@@ -87,7 +86,6 @@ function yelpHandler(db) {
         }); */
 
       const client = yelp.client(process.env.clientSecret);
-    console.log(location);
       processData(client, location);
        
         var businesses = [];

@@ -63,15 +63,11 @@
 		function search(searchText){
 			// Reset the variable holding the stuff to display everytime. If this line wasn't here we would only be adding to stuff on screen without removing the past search results. 
             $scope.stores = [];
-          console.log(searchText);
-      console.log(apiUrl + "api/yelp/?location=" + searchText);
 			// Other resets
             var users = [];
             var counter = 0;
             // Get the locations for the Yelp API
             ajaxRequest('GET', apiUrl + "api/yelp/?location=" + searchText, function(data) {
-                console.log(data);
-                console.log("Hi");
                 data = JSON.parse(data);
                 mySyncFunction(counter);
 
